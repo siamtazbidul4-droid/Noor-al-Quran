@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-emerald-primary: #0B3D32;
+    --color-gold-accent: #B38A42;
+    --color-ivory-bg: #FAF8F2;
+    --color-forest-dark: #111C19;
+    --color-forest-card: #162622;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .font-quran {
+    font-family: 'Amiri Quran', 'Scheherazade New', 'Traditional Arabic', serif;
+  }
+
+  .font-bengali {
+    font-family: 'Noto Serif Bengali', 'SolaimanLipi', 'Kalpurush', serif;
+  }
+}
+
+/* Custom scrollbar for Quran verse reading */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(179, 138, 66, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(179, 138, 66, 0.45);
+}
+
+/* Ensure touch targets are at least 44x44px for mobile accessibility */
+@media (max-width: 640px) {
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Support for xs breakpoint (below sm) */
+@media (min-width: 475px) {
+  .xs\:block {
+    display: block;
+  }
+  .xs\:inline {
+    display: inline;
+  }
+  .xs\:flex-row {
+    flex-direction: row;
+  }
+  .xs\:items-center {
+    align-items: center;
+  }
+  .xs\:justify-start {
+    justify-content: flex-start;
+  }
+  .xs\:w-auto {
+    width: auto;
+  }
+}

@@ -1,0 +1,1501 @@
+# MASTER PROMPT — NOOR AL-QURAN
+## Elite Production-Grade Full-Stack Quran Reading, Bengali Translation, Transliteration, and Authentic Audio Platform
+
+---
+
+# 1. ROLE, RESPONSIBILITY, AND ENGINEERING STANDARD
+
+You are the principal software architect, senior full-stack engineer, security engineer, data integrity engineer, audio systems engineer, UI/UX designer, QA automation engineer, and DevOps engineer responsible for delivering a professional Quran platform for a real client.
+
+Project name: **Noor Al-Quran (নূর আল-কুরআন)**
+
+Arabic branding: القرآن الكريم
+
+Product category: Full-stack Quran reading, Bengali translation, Bengali transliteration, authentic Quran recitation, personal reading management, and administration platform.
+
+This is a real client project. It is not a tutorial, mockup, prototype, disposable demonstration, or portfolio-only exercise.
+
+Your objective is to implement a coherent, secure, maintainable, accessible, and production-oriented application using the requested technology stack.
+
+Do not merely generate code that looks plausible. Inspect the actual project, implement the requirements, execute available verification commands, fix discovered defects, and report only work that has genuinely been completed and verified.
+
+Operate according to these principles:
+
+1. Correctness before convenience.
+2. Verified religious content before feature completeness.
+3. Root-cause fixes before superficial workarounds.
+4. Security and data integrity before visual polish.
+5. Real functionality before mock demonstrations.
+6. Maintainability and reliability before unnecessary complexity.
+7. Evidence-based verification before declaring completion.
+
+Never claim that you are a PhD-level expert as a substitute for demonstrating technical competence. Demonstrate competence through sound engineering decisions and verifiable implementation.
+
+# 2. NON-NEGOTIABLE WORKFLOW: INSPECT BEFORE IMPLEMENTING
+
+Before making any code changes, inspect the available Google AI Studio project and determine its actual state.
+
+If the project already contains files:
+
+- Read the project structure and relevant source files.
+- Inspect package.json, lockfiles, TypeScript configuration, Vite configuration, Tailwind configuration, routing, environment examples, server entry points, database connections, API contracts, authentication, tests, and deployment configuration.
+- Identify the existing framework versions and actual installed dependencies.
+- Trace the user journey from frontend interactions through backend endpoints to persistence and external services.
+- Identify existing functionality that must be preserved.
+- Detect incomplete features, duplicate implementations, security weaknesses, architectural mismatches, and missing requirements.
+- Use actual source code as evidence. Never invent filenames, exports, APIs, environment variables, installed packages, or database schemas.
+
+If the project is empty, establish a clean and maintainable full-stack architecture.
+
+If the environment cannot access a required file, external service, terminal, credential, or deployment environment, state the limitation honestly and continue with the portions that can be implemented safely.
+
+Do not replace an existing working project with an unnecessary rewrite.
+
+Do not respond with only a plan. Implement the actual application whenever the available tools and permissions permit.
+
+Use short implementation phases internally, but continue through implementation, testing, and defect correction instead of stopping after each planning phase.
+
+# 3. COMPLETE CLIENT REQUIREMENTS ARE MANDATORY
+
+Preserve all the following requirements unless a genuine legal, security, technical, or source-availability constraint makes a particular implementation impossible.
+
+When a constraint exists, implement the safest valid alternative, document the exact limitation, and never represent an unavailable feature as complete.
+
+## Core Quran functionality
+
+- Complete Quran consisting of 114 surahs.
+- All 30 juz/paras.
+- Arabic Quran text from an authoritative, identified source.
+- Appropriate Uthmani script, Unicode preservation, diacritics, shaddah, madd, and verse boundaries.
+- Bengali transliteration for every supported verse.
+- Bengali translation for every supported verse.
+- Authentic male Quran recitation from a real, identified qari.
+- Verse-level audio wherever the chosen source genuinely supports it.
+- Complete surah playback wherever an actual complete-surah recording exists.
+- Navigation by surah, juz, and verse.
+- Accurate reading progress and continue-reading functionality.
+- Bookmarks and personal settings.
+- Responsive mobile, tablet, laptop, and desktop interfaces.
+- Search across supported Quran metadata and text.
+- Optional user accounts; Quran reading must not require login.
+- Secure administration for source metadata, audio metadata, user management, integrity reports, and audited content workflows.
+
+Never generate Quran verses, Quran translations, transliterations, religious quotations, or Quran recitation audio using generative AI as a replacement for verified source content.
+
+AI may assist with software development, testing, diagnostics, and non-authoritative interface copy. It must never invent sacred content.
+
+# 4. REQUIRED TECHNOLOGY STACK
+
+## Frontend
+
+- React.
+- TypeScript with strict type checking.
+- Vite.
+- Tailwind CSS, using the version compatible with the existing project or the selected supported configuration.
+- React Router.
+- Lucide React icons.
+- Accessible, reusable React components.
+- A small, justified state-management solution appropriate to actual application complexity.
+
+Use semantic HTML, strict types, predictable component boundaries, and consistent error handling.
+
+Do not introduce a large state-management library without a real architectural need.
+
+## Backend
+
+- Node.js.
+- Express.js.
+- TypeScript.
+- Versioned REST APIs under /api/v1.
+- Runtime request validation using an appropriate established schema-validation library.
+- Centralized error handling.
+- Secure authentication and server-side authorization.
+- Rate limiting, security headers, logging, and request timeouts.
+
+Use supported, mutually compatible dependency versions. Verify the actual installed versions and APIs before using them.
+
+## Database
+
+- MongoDB.
+- Mongoose or an equally justified, compatible MongoDB access layer.
+- Proper schema validation, indexes, timestamps, pagination, and ownership checks.
+- Persistent storage for accounts, bookmarks, progress, preferences, and administrative audit records.
+
+Never use an in-memory Map, mock repository, browser localStorage, or fabricated JSON response as the production database.
+
+Never silently fall back to in-memory production persistence when MongoDB is unavailable.
+
+## Deployment and infrastructure
+
+Design for a supported Node.js hosting environment and MongoDB Atlas or another explicitly configured persistent MongoDB deployment.
+
+Support:
+
+- Environment-based configuration.
+- Production build and startup scripts.
+- Secure secrets management.
+- Health and readiness endpoints.
+- Structured application logs.
+- Database backup and recovery documentation.
+- CDN-compatible audio delivery.
+- Caching with appropriate invalidation.
+- CI-friendly testing.
+
+Do not hardcode deployment credentials, production URLs, private API keys, passwords, or signing secrets.
+
+# 5. DATA SOURCE STRATEGY AND SOURCE-OF-TRUTH RULES
+
+This is one of the most critical requirements in the entire project.
+
+Before implementing content integrations, investigate the official documentation, availability, authentication requirements, response formats, rate limits, data coverage, and licensing of potential providers.
+
+Evaluate:
+
+1. Quran Foundation Content API:
+   https://api-docs.quran.foundation/
+
+2. Tanzil Quran text:
+   https://tanzil.net/docs/
+
+3. A suitable, independently verified source for Bengali Quran translation.
+
+4. A suitable, independently verified source for Bengali transliteration.
+
+5. A suitable, licensed Quran recitation audio source with documented qari identity and supported verse/surah coverage.
+
+These are candidates to investigate, not automatic guarantees that every required asset is freely redistributable or available without credentials.
+
+Do not assume that a source offering Arabic text also offers Bengali transliteration, Bengali translation, or every required audio file.
+
+## Source registry
+
+Implement a centralized content-source registry or equivalent service that records, where applicable:
+
+- Provider identifier.
+- Content type.
+- Dataset or resource version.
+- Retrieval date.
+- License and attribution information.
+- Source documentation.
+- Verification status.
+- Supported languages.
+- Supported reciters.
+- Verse-level versus surah-level audio coverage.
+- Relevant provider identifiers.
+- Last successful availability check.
+
+Do not expose confidential credentials in public API responses or logs.
+
+## Content storage architecture
+
+Keep canonical Quran content logically separate from user-specific MongoDB data.
+
+Prefer an immutable, versioned, verified Quran content dataset or a legally permitted persistent content cache over repeated unrestricted external API calls.
+
+The exact storage approach must respect the source's license.
+
+For example:
+
+- If redistribution is permitted, package an appropriately attributed and versioned dataset or store it in a suitable content repository.
+- If redistribution is restricted, use the authorized provider API or another explicitly permitted access method.
+- If caching is permitted, implement bounded, version-aware caching.
+- If a source requires attribution, display the required attribution.
+- If an external source is unavailable and no valid verified snapshot exists, return a clear unavailable state instead of fabricated content.
+
+Do not bundle restricted data into the repository or redistribute it without authorization.
+
+## External integration requirements
+
+- Keep private API credentials on the backend.
+- Validate external response schemas.
+- Set network timeouts.
+- Handle rate limits and temporary provider failures.
+- Use bounded retries with backoff where appropriate.
+- Avoid infinite retry loops.
+- Avoid repeatedly downloading the same content.
+- Cache only when permitted.
+- Record provider and dataset versions.
+- Provide useful diagnostic logs without exposing secrets.
+
+If an API requires credentials that have not been supplied, implement the integration interface and configuration validation, but clearly report that live integration remains blocked until credentials are provided.
+
+Never substitute invented verses, fake audio, or mock API responses.
+
+# 6. QURAN DATA MODEL AND INTEGRITY
+
+Use the selected authoritative dataset and its documented counting convention as the source of truth.
+
+The commonly used count is 114 surahs and 6,236 verses, but record the actual selected dataset, verse-counting convention, and relevant metadata rather than treating a count alone as proof of correctness.
+
+Implement or provide a reproducible content-integrity validation utility.
+
+Validate:
+
+1. The expected number of surahs.
+2. Each surah's expected verse count against the selected dataset.
+3. Ordered verse identifiers.
+4. Duplicate and missing verse records.
+5. Arabic text presence and source fidelity.
+6. Juz boundaries and cross-reference mappings.
+7. Translation-to-verse mappings.
+8. Transliteration-to-verse mappings.
+9. Audio-to-surah and audio-to-verse mappings.
+10. Source, version, and license metadata.
+11. Valid Unicode and diacritic preservation.
+12. Unexpected text modifications or dataset drift.
+
+Where the source provides canonical identifiers or checksums, use them.
+
+Where canonical checksums are unavailable, use a reproducible comparison against the authorized reference dataset.
+
+A checksum proves equality to a particular byte sequence; it does not independently prove religious correctness.
+
+Do not normalize, remove, reorder, or rewrite Arabic diacritics in a way that changes canonical content.
+
+Any Unicode normalization must be explicitly justified, documented, and tested against the source.
+
+Do not infer that every Unicode-valid string is a correct Quran verse.
+
+## Juz/para mapping
+
+Do not hardcode a list of 30 placeholder cards and claim the juz system is complete.
+
+Use verified juz metadata or derive the mappings from the authoritative dataset's actual verse references.
+
+Each juz must resolve to its actual first and last verse according to the selected source.
+
+Navigation must open the correct surah and verse.
+
+Support juz boundaries that occur within a surah.
+
+Validate the full mapping before publishing a content release.
+
+# 7. BENGALI TRANSLATION AND TRANSLITERATION
+
+Keep these four concepts separate:
+
+- Arabic Quran text: canonical source content.
+- Bengali transliteration: a reading aid written in Bengali script.
+- Bengali translation: an interpretation of the verse's meaning.
+- Tajweed guidance: educational information about Quran recitation.
+
+Never treat translation as transliteration or transliteration as a substitute for learning Arabic pronunciation.
+
+For every supported verse, preserve the correct relationship between the Arabic text, Bengali transliteration, and Bengali translation.
+
+Record applicable metadata:
+
+- Translator or transliteration editor.
+- Dataset or edition.
+- Language.
+- Provider.
+- License.
+- Attribution requirements.
+- Verification status.
+
+Do not create Bengali transliteration with a generative model and label it verified.
+
+Do not invent translation credits or claim that scholars have reviewed a dataset without evidence.
+
+If verified Bengali transliteration is unavailable, communicate that limitation explicitly and do not silently substitute generated text.
+
+Provide settings to show or hide Bengali transliteration and translation independently.
+
+Explain unobtrusively that Bengali transliteration cannot fully represent Arabic makhraj and tajweed.
+
+## Multiple translations
+
+Design the data model to support multiple translations if authorized sources become available.
+
+The first release may expose one verified Bengali translation, provided its source and usage rights are confirmed.
+
+Do not display fictional translator names or pretend unavailable editions are installed.
+
+# 8. REQUIRED APPLICATION ROUTES AND PAGES
+
+Implement the following routes using the existing router or an equivalent clean route structure.
+
+## A. Home page
+
+Suggested route: /
+
+Include:
+
+- Brand identity and accessible navigation.
+- Arabic heading: القرآن الكريم.
+- Bengali hero title: “পবিত্র কুরআন পড়ুন, শুনুন ও বুঝুন”.
+- Short, respectful introduction.
+- Primary action: “কুরআন পড়ুন”.
+- Secondary action: “তিলাওয়াত শুনুন”.
+- Continue Reading when valid progress exists.
+- 30-juz explorer.
+- Surah explorer.
+- Search entry point.
+- A daily verse feature only when its content is selected deterministically from the verified dataset.
+
+Do not imply that a displayed verse was selected through divine guidance or special spiritual authority.
+
+Do not make unsupported religious claims.
+
+Do not display a random unverified quotation as a Quran verse.
+
+## B. Quran reader
+
+Suggested route: /quran or /quran/:surahNumber
+
+Support a direct, shareable route that can identify a specific verse, for example:
+
+/quran/2?ayah=255
+
+Adapt the exact URL structure to the existing routing conventions.
+
+Display each verse with:
+
+- Surah name and number.
+- Verse number.
+- Canonical Arabic text.
+- Bengali transliteration when available.
+- Bengali translation when available.
+- Play/pause action when a real audio asset is available.
+- Bookmark action.
+- Repeat action.
+- Share action.
+- Copy-text action.
+- Previous/next verse navigation.
+- Clear current-verse highlighting during playback.
+- Optional translation and transliteration visibility.
+- Adjustable Arabic font size.
+- Adjustable line spacing.
+- Surah and juz navigation.
+
+Preserve the canonical Arabic string.
+
+Do not truncate verses in the actual reader.
+
+Use a suitable Uthmani Quran font when the selected font's license permits it. Provide an appropriate fallback without corrupting the text.
+
+Use correct RTL direction and Arabic text isolation so Bengali and Arabic punctuation or numbers do not render incorrectly.
+
+## C. Juz explorer
+
+Suggested route: /juz
+
+Display all 30 juz with:
+
+- Verified number and name or label.
+- First verse reference.
+- Last verse reference.
+- Reading entry point.
+- Relevant progress when available.
+
+Any traditional juz name displayed must come from an identified source or be omitted when unavailable.
+
+Clicking a juz must open the correct first verse.
+
+## D. Surah explorer
+
+Suggested route: /surahs
+
+Display all 114 surahs with:
+
+- Surah number.
+- Arabic name.
+- Bengali display name from verified metadata where available.
+- English display name.
+- Actual verse count.
+- Verified Makki/Madani metadata when available.
+- Read action.
+- Audio action when actual audio is available.
+
+Support searching by surah number and supported Arabic, Bengali, and English names.
+
+Do not invent Bengali surah names or metadata.
+
+## E. Audio library
+
+Suggested route: /audio
+
+Include:
+
+- Available reciters.
+- Supported surah recordings.
+- Verse-level audio coverage where available.
+- Audio source attribution.
+- Track metadata and real duration when available.
+- Playback status and error handling.
+- Direct entry into the relevant surah or verse.
+
+Do not display a reciter as fully available for all 114 surahs unless coverage has actually been established.
+
+## F. Personal Quran library
+
+Suggested route: /my-quran
+
+Include:
+
+- Bookmarks.
+- Last-read position.
+- Reading history where implemented.
+- Completed juz tracking.
+- Preferred reciter.
+- Reader settings.
+- Audio preferences.
+- Account synchronization status.
+
+Allow guest access to core Quran reading. Explain when a personal-library feature requires login.
+
+## G. Authentication
+
+Suggested routes:
+
+- /login
+- /register
+
+Account creation is optional.
+
+Support email/password authentication in the first release if the required configuration and infrastructure are available.
+
+Google Sign-In may be added when credentials and provider configuration are supplied.
+
+Never fake a successful login or use a public hardcoded administrator account.
+
+## H. Admin dashboard
+
+Suggested route: /admin
+
+Include:
+
+- Dataset and source versions.
+- Content integrity reports.
+- Translation/transliteration metadata.
+- Reciter and audio metadata.
+- Provider health and last successful checks.
+- User management.
+- Error logs.
+- Administrative audit logs.
+- Controlled configuration management.
+
+All administrative data and actions must be protected by server-side authorization.
+
+## I. Utility states
+
+Implement appropriate:
+
+- Not found page.
+- Access denied page.
+- Loading states.
+- Empty states.
+- Error states.
+- Retry actions.
+- Offline or connection-lost states.
+- Accessible notifications.
+- Session-expired handling.
+
+No broken links or dead-end buttons.
+
+# 9. PREMIUM UI/UX DESIGN SYSTEM
+
+Brand: Noor Al-Quran.
+
+Use a premium, restrained Islamic design system.
+
+Suggested palette:
+
+- Emerald Green: #0B3D32
+- Warm Gold: #B38A42
+- Warm Ivory: #FAF8F2
+- Deep Forest: #111C19
+
+Support a coordinated light and dark theme.
+
+Typography:
+
+- Appropriate licensed Uthmani Arabic font.
+- Readable Bengali Unicode font.
+- Modern English sans-serif font.
+
+Use locally hosted or appropriately cached font assets when licensing and performance permit.
+
+Design principles:
+
+- Mobile-first responsive layout.
+- Generous whitespace.
+- Strong typography hierarchy.
+- Readable Arabic line height.
+- Clear Bengali text hierarchy.
+- Consistent Lucide icons.
+- Subtle transitions.
+- Accessible contrast.
+- Clear focus indicators.
+- Keyboard-accessible controls.
+- Touch targets appropriate for mobile use.
+- Minimal distraction on the Quran reader.
+- No intrusive advertising or unnecessary popups.
+
+Navigation should include:
+
+- Home.
+- Al-Quran.
+- 30 Para.
+- Audio.
+- Bookmarks.
+- Search.
+- Bengali/English interface-language toggle.
+- Light/dark mode.
+- Login/profile.
+
+On mobile, use a compact menu and ensure the reader and audio controls remain usable.
+
+The language toggle controls the interface language. It must not silently change the selected translation edition.
+
+Do not create static screenshots masquerading as a functioning application.
+
+Every visible action must work or clearly indicate that it is unavailable.
+
+# 10. AUTHENTIC AUDIO ENGINE
+
+Audio is a core functional requirement.
+
+Use real recordings from an identified male qari, with lawful access and appropriate attribution.
+
+Do not use synthetic text-to-speech as a substitute for Quran recitation.
+
+## Audio resource model
+
+Distinguish between:
+
+- Complete-surah audio.
+- Individual-verse audio.
+- Any provider-supported segmented audio.
+
+Do not infer that a full-surah recording contains independently addressable verse files.
+
+For each audio resource, track the metadata actually supplied or verified by the provider:
+
+- Reciter identifier.
+- Surah and verse identifiers where applicable.
+- Actual audio URL or provider resource identifier.
+- Duration when available.
+- Format when available.
+- Source attribution.
+- License information.
+- Verification and availability status.
+
+Do not invent duration or coverage metadata.
+
+## Required playback behavior
+
+Implement:
+
+- Play and pause.
+- Real elapsed time and duration.
+- Seek when the resource supports seeking.
+- Previous and next verse where supported.
+- Repeat current verse when a genuine verse-level recording exists.
+- Continuous surah playback.
+- Reciter selection where multiple compatible reciters are available.
+- Loading and buffering indicators.
+- Failed playback state and retry.
+- Playback-speed control where supported.
+- Responsive player controls.
+- Current-verse highlighting.
+- Proper cleanup of media resources and event listeners.
+- Prevention of unintended overlapping playback.
+
+When advancing between verse-level files, maintain predictable queue behavior and handle missing audio assets.
+
+When only a full-surah file is available, provide surah-level playback honestly. Do not claim accurate verse-level seeking or repeat unless the required timing or segmentation data exists.
+
+Use native HTML audio or an established, justified player implementation.
+
+Do not manually fetch the entire audio file into application memory merely to implement a seek bar.
+
+Support HTTP range requests through the actual hosting provider where applicable.
+
+Respect browser autoplay restrictions and require a user gesture where needed.
+
+Background playback is best-effort and depends on browser and operating-system support.
+
+If playback speed changes pitch or affects recitation quality, document the limitation and use the most appropriate supported implementation.
+
+Do not claim that a speed control preserves natural recitation unless that behavior has been verified.
+
+Audio must never block the initial rendering of Arabic text.
+
+# 11. READING PROGRESS AND PERSONALIZATION
+
+Guest users must be able to read and listen without creating an account.
+
+## Guest persistence
+
+Store minimal guest reading state using an appropriate browser persistence mechanism.
+
+Guest state may include:
+
+- Last-read verse.
+- Selected surah or juz.
+- Reader display preferences.
+- Locally stored bookmarks when appropriate.
+
+Do not store passwords, authentication tokens, or sensitive information in localStorage.
+
+Clearly distinguish local guest state from server-persisted account state.
+
+## Account synchronization
+
+For authenticated users, store persistent progress and bookmarks in MongoDB.
+
+Implement a documented merge strategy when guest progress is imported after login.
+
+Consider:
+
+- Most recently read position.
+- Timestamped updates.
+- Duplicate bookmarks.
+- Conflicting updates across devices.
+- Network failures.
+- Idempotent operations.
+
+Do not silently overwrite valid account progress with stale local data.
+
+Use optimistic updates only when rollback and error feedback are implemented.
+
+## Reading progress semantics
+
+Define what a completed surah or juz means.
+
+Do not infer that opening a surah means the user has completed it.
+
+Track actual user actions or explicitly recorded completion events.
+
+# 12. AUTHENTICATION AND SECURITY
+
+Use secure authentication appropriate to the deployed architecture.
+
+Prefer server-managed sessions using HttpOnly cookies and a secure session store, or another justified secure design.
+
+For cookie-based authentication:
+
+- HttpOnly.
+- Secure in production.
+- Appropriate SameSite policy.
+- Session expiration and renewal strategy.
+- Session invalidation at logout.
+- CSRF protection where required.
+- Strict origin validation where applicable.
+- Correct CORS configuration.
+- No unnecessary wildcard credentialed origins.
+
+If using signed tokens, never treat JWT usage alone as proof of secure authentication.
+
+Do not expose session secrets to frontend code.
+
+For email/password authentication:
+
+- Hash passwords with an appropriate password-hashing algorithm.
+- Validate and normalize input.
+- Rate-limit authentication endpoints.
+- Return generic authentication errors where appropriate.
+- Never log passwords.
+- Protect password reset flows if implemented.
+- Do not log session cookies or bearer tokens.
+
+## Authorization
+
+Implement backend authorization for every protected resource.
+
+Enforce:
+
+- User ownership of bookmarks and progress.
+- Administrator-only management operations.
+- Explicit roles and permissions.
+- Protection against role escalation.
+- Safe pagination and query limits.
+- Validation of resource identifiers.
+- Consistent 401 and 403 responses.
+
+Never trust a client-supplied role, user ID, ownership claim, or authorization flag.
+
+Never allow public registration to create an admin account.
+
+Bootstrap the initial administrator through a documented, secure, deployment-time process. Do not hardcode credentials or expose bootstrap secrets to the browser.
+
+## General security
+
+Use appropriate:
+
+- Helmet or equivalent secure HTTP headers.
+- CORS restrictions.
+- Request validation.
+- Request-size limits.
+- Rate limiting.
+- Secure error handling.
+- Dependency vulnerability checks where available.
+- Input sanitization appropriate to the output context.
+- Log redaction.
+- SSRF protections if the backend accepts configurable remote URLs.
+- File-upload restrictions if uploads are introduced.
+
+Do not build a general-purpose URL-fetching endpoint for administrator-supplied audio URLs without strict destination validation.
+
+# 13. MONGODB DATA MODEL
+
+Design schemas based on actual application requirements.
+
+Expected persistent entities may include:
+
+## User
+
+- Display name.
+- Email.
+- Password hash when password authentication is enabled.
+- Role.
+- Account status.
+- Creation and update timestamps.
+- Relevant security metadata.
+
+Never store plaintext passwords.
+
+## Bookmark
+
+- Owner ID.
+- Surah number.
+- Verse number.
+- Optional note if implemented.
+- Creation timestamp.
+
+Add suitable unique indexes to prevent duplicate bookmarks for the same user and verse, unless the product explicitly supports multiple bookmark records.
+
+## ReadingProgress
+
+- Owner ID.
+- Last-read surah and verse.
+- Last-selected juz where applicable.
+- Explicitly tracked completed items.
+- Updated timestamp.
+- Optional version or concurrency metadata.
+
+## UserPreferences
+
+- Preferred reciter.
+- Arabic font size.
+- Line spacing.
+- Translation visibility.
+- Transliteration visibility.
+- Theme.
+- Interface language.
+- Audio preferences.
+
+## AuditLog
+
+- Actor identifier where applicable.
+- Action type.
+- Target resource.
+- Timestamp.
+- Outcome.
+- Appropriate non-sensitive contextual metadata.
+
+Never include passwords, session secrets, private credentials, or full authentication tokens.
+
+## Content metadata
+
+Represent verified content source and release information separately from mutable user data.
+
+If the content is bundled as a versioned read-only dataset, do not create a duplicate MongoDB copy of every verse merely to satisfy the appearance of a database-driven architecture.
+
+Use MongoDB where it provides real value.
+
+Implement appropriate indexes and inspect important query patterns.
+
+Never silently switch to an in-memory database in production.
+
+# 14. REQUIRED REST API DESIGN
+
+Implement a coherent, versioned API under /api/v1.
+
+Adapt endpoint details to the verified source integration and existing project architecture.
+
+## Quran content
+
+GET /api/v1/quran/surahs
+
+GET /api/v1/quran/surahs/:number
+
+GET /api/v1/quran/surahs/:number/ayahs
+
+GET /api/v1/quran/ayahs/:surah/:ayah
+
+GET /api/v1/quran/juz
+
+GET /api/v1/quran/juz/:number
+
+Requirements:
+
+- Validate surah and verse identifiers.
+- Support appropriate pagination or bounded responses.
+- Return accurate metadata.
+- Preserve canonical Arabic text.
+- Never fabricate unavailable content.
+- Use consistent response contracts.
+
+## Audio
+
+GET /api/v1/audio/reciters
+
+GET /api/v1/audio/ayah/:surah/:ayah
+
+GET /api/v1/audio/surah/:number
+
+Requirements:
+
+- Return only genuinely available resources.
+- Distinguish verse-level and surah-level playback.
+- Include verified attribution and applicable metadata.
+- Handle unavailable audio explicitly.
+
+## Search
+
+GET /api/v1/search
+
+Support appropriate parameters for:
+
+- Query text.
+- Language or search field.
+- Surah filter.
+- Juz filter where supported.
+- Pagination.
+
+Validate and limit queries.
+
+Do not use unbounded database scans for every search request.
+
+## User progress
+
+GET /api/v1/user/progress
+
+PUT /api/v1/user/progress
+
+GET /api/v1/user/bookmarks
+
+POST /api/v1/user/bookmarks
+
+DELETE /api/v1/user/bookmarks/:id
+
+Requirements:
+
+- Authenticate protected requests.
+- Validate ownership.
+- Use appropriate idempotency and conflict handling.
+- Do not allow a user to read or modify another user's data.
+- Define a safe guest strategy separately.
+- Return consistent errors.
+
+## Authentication
+
+Use clearly defined routes for registration, login, logout, current-user information, and any implemented password recovery.
+
+Do not implement fake Google authentication.
+
+## Administration
+
+Use a protected /api/v1/admin namespace or an equivalent consistent design.
+
+Include endpoints only for features that are actually implemented, such as:
+
+- Content source metadata.
+- Dataset release reports.
+- Reciter metadata.
+- Audio availability reports.
+- User management.
+- Audit logs.
+- Approved configuration.
+
+Do not expose unrestricted filesystem access or arbitrary remote URL fetching.
+
+## API response conventions
+
+Use predictable JSON responses, appropriate HTTP status codes, and centralized error handling.
+
+Do not return stack traces, database credentials, private tokens, or internal secrets to clients.
+
+Support request correlation IDs where appropriate.
+
+Document important response schemas.
+
+# 15. SEARCH ENGINE
+
+Implement useful, accurate search over the actual supported content.
+
+Search targets may include:
+
+- Surah number.
+- Surah names.
+- Juz number.
+- Verse number.
+- Bengali translation text.
+- Bengali transliteration.
+- Arabic text when supported by the dataset and search implementation.
+
+Use a bounded query model.
+
+Implement appropriate indexes, pagination, input limits, and query timeouts where applicable.
+
+For Arabic search, consider a separate search-normalization representation for matching, while preserving the canonical display text unchanged.
+
+Any normalization of Arabic diacritics or character variants must be restricted to search indexing and must not modify the source Quran text.
+
+Bengali transliteration search must search the verified transliteration dataset rather than a generated approximation.
+
+Search results must display:
+
+- Surah identity.
+- Verse number.
+- Relevant matching text.
+- A direct Open Ayah action.
+
+Do not invent search results.
+
+If a search capability is not supported by the selected content source, explain the limitation rather than pretending it works.
+
+# 16. ADMIN CONTENT GOVERNANCE
+
+The admin dashboard must be a real administrative application, not a decorative collection of cards.
+
+Implement:
+
+- Source registry visibility.
+- Dataset version visibility.
+- Integrity validation reports.
+- Reciter metadata management.
+- Audio availability checks.
+- User management with server-side permissions.
+- Error and operational logs.
+- Audit trails.
+- Approved configuration management.
+
+## Sacred content protection
+
+Canonical Quran text must remain immutable in the published dataset.
+
+An administrator must never silently overwrite a published canonical Quran text record.
+
+Where correction workflows are necessary:
+
+1. Record a proposed change.
+2. Record its source and justification.
+3. Require the appropriate review and approval.
+4. Respect the source license.
+5. Generate a new candidate content release.
+6. Run integrity validation.
+7. Record the approval and audit trail.
+8. Publish only after all required checks pass.
+9. Preserve rollback capability where legally and technically appropriate.
+
+Translation and transliteration changes must also be versioned and auditable.
+
+Do not claim scholarly verification unless the relevant human review actually occurred.
+
+For third-party content that cannot legally be modified or redistributed, the application must respect those restrictions instead of building an unauthorized editing or publishing workflow.
+
+# 17. CONTENT RELEASE AND VERIFICATION PIPELINE
+
+Implement a reproducible content validation process.
+
+Where possible, make the validation executable through a dedicated script and integrate it into CI or the content-release workflow.
+
+The pipeline must:
+
+1. Load the selected dataset.
+2. Validate the expected surah structure.
+3. Validate verse ordering and counts.
+4. Detect duplicate or missing verse identifiers.
+5. Validate juz boundaries.
+6. Check source and version metadata.
+7. Verify available translation mappings.
+8. Verify available transliteration mappings.
+9. Verify audio-resource mappings.
+10. Check expected Arabic text fidelity against the authorized source.
+11. Produce a machine-readable report.
+12. Fail the content release when mandatory structural checks fail.
+
+Use explicit validation severity levels.
+
+A missing optional audio asset should be reported differently from a missing canonical Quran verse.
+
+Do not mark the dataset fully verified merely because a script returns exit code zero.
+
+Document the difference between:
+
+- Structural validation.
+- Source comparison.
+- Audio availability verification.
+- License verification.
+- Human religious and linguistic review.
+
+The application must not claim full religious or scholarly verification unless sufficient evidence exists.
+
+# 18. OFFLINE SUPPORT
+
+Design the architecture so that offline reading can be introduced without compromising content integrity.
+
+Do not automatically download every available audio file.
+
+Respect the browser storage quota and the applicable content license.
+
+If offline reading is included in the first release, explicitly define the permitted scope:
+
+- Arabic text.
+- Bengali translation.
+- Bengali transliteration.
+- Metadata.
+- Audio assets, if separately authorized.
+
+Use a suitable service-worker and caching strategy where supported.
+
+Implement:
+
+- Cache versioning.
+- Update behavior.
+- Storage failure handling.
+- Clear offline availability indicators.
+- Stale-cache management.
+- Network reconnection behavior.
+- Conflict-aware progress synchronization.
+
+Do not display an offline-ready indicator until the required resources have actually been cached.
+
+If the required content cannot legally or technically be stored offline, implement a clear online-only behavior instead.
+
+# 19. ACCESSIBILITY AND INTERNATIONALIZATION
+
+Target WCAG 2.2 AA where practical and testable.
+
+Implement:
+
+- Keyboard navigation.
+- Visible focus.
+- Semantic landmarks.
+- Accessible buttons and form labels.
+- Screen-reader-friendly audio controls.
+- Proper RTL Arabic rendering.
+- Correct language attributes.
+- Appropriate contrast.
+- Reduced-motion support.
+- Focus management in dialogs.
+- Useful status announcements for loading and playback.
+
+Support Bengali and English interface labels.
+
+Keep Quran Arabic content in its canonical language and script.
+
+Do not automatically translate the Quran text when switching the interface language.
+
+Preserve the selected translation edition explicitly.
+
+# 20. PERFORMANCE AND RELIABILITY
+
+Optimize based on actual behavior rather than unsupported benchmark claims.
+
+Implement where justified:
+
+- Route-based code splitting.
+- Lazy loading.
+- Bounded API responses.
+- Efficient rendering for long verse lists.
+- Virtualization when measured or expected rendering costs justify it.
+- Proper MongoDB indexes.
+- CDN delivery for audio.
+- Appropriate cache headers.
+- Avoidance of duplicate network requests.
+- Abortable stale search requests.
+- Cleanup of media and event listeners.
+- Independent loading of text and audio.
+- Graceful provider failure handling.
+
+The Quran reader must render available verified text without waiting for audio downloads.
+
+Do not cache sensitive user responses publicly.
+
+Do not use a shared cache key for private data without including the correct access boundaries.
+
+Use timeouts and bounded retries for external dependencies.
+
+Document operational recovery procedures and backup expectations.
+
+Do not claim specific latency, uptime, or scalability figures without measured evidence.
+
+# 21. TESTING REQUIREMENTS
+
+Write and execute the tests supported by the available environment.
+
+Choose tools compatible with the existing project. For example, use Vitest for unit and integration tests when compatible, and an appropriate browser automation framework for end-to-end testing when available.
+
+## Unit tests
+
+Test:
+
+- Surah and verse identifier validation.
+- Juz navigation calculations.
+- Progress merge rules.
+- Bookmark deduplication.
+- Search normalization.
+- Audio queue behavior.
+- Error formatting.
+- Data integrity utilities.
+
+## Integration tests
+
+Test:
+
+- API response contracts.
+- MongoDB persistence.
+- Authentication.
+- Session expiration and logout.
+- User ownership checks.
+- Admin authorization.
+- Bookmark creation and deletion.
+- Progress persistence.
+- Search pagination.
+- External provider failure handling.
+
+Use an isolated test database or an appropriate disposable test environment.
+
+Never run destructive test operations against production data.
+
+## End-to-end tests
+
+Test the most important user journeys:
+
+1. Open the homepage as a guest.
+2. Navigate to a real surah.
+3. Verify actual Arabic content.
+4. Show and hide Bengali transliteration.
+5. Show and hide Bengali translation.
+6. Navigate to a specific verse.
+7. Play a real audio resource.
+8. Pause and resume playback.
+9. Seek where supported.
+10. Repeat a verse when verse-level audio exists.
+11. Play a complete surah where supported.
+12. Search for an actual verse.
+13. Create and remove a bookmark.
+14. Save and restore guest reading progress.
+15. Register or log in when authentication is configured.
+16. Verify authenticated progress persistence.
+17. Verify that one user cannot access another user's private data.
+18. Verify that a normal user cannot access admin operations.
+19. Verify useful error behavior when the audio provider fails.
+20. Test responsive reader behavior.
+
+Use actual content and authorized test credentials.
+
+Mock external services only in isolated automated tests. Do not confuse mocked test results with successful live integration verification.
+
+## Build and quality checks
+
+Run the relevant commands supported by the actual project, such as:
+
+- TypeScript type checking.
+- Linting.
+- Unit tests.
+- Integration tests.
+- Content integrity validation.
+- Production build.
+- End-to-end tests.
+- Production-like smoke tests.
+
+Inspect browser console output and server logs where tools permit.
+
+Fix relevant defects and rerun the affected checks.
+
+Never claim that a command ran successfully unless its actual output was observed.
+
+# 22. ENVIRONMENT CONFIGURATION
+
+Create or update a safe environment example file based on actual implementation.
+
+Possible variables, only where genuinely required, may include:
+
+MONGODB_URI
+
+SESSION_SECRET
+
+APP_ORIGIN
+
+API_BASE_URL
+
+QURAN_PROVIDER_BASE_URL
+
+QURAN_PROVIDER_CLIENT_ID
+
+QURAN_PROVIDER_CLIENT_SECRET
+
+AUDIO_PROVIDER_BASE_URL
+
+EMAIL_PROVIDER_API_KEY
+
+These names are examples, not permission to invent provider integrations.
+
+Use the actual names required by the chosen architecture and official provider documentation.
+
+Never commit actual secrets.
+
+Validate required environment variables at startup.
+
+Fail fast with a useful, non-sensitive error when a mandatory production configuration is missing.
+
+Do not silently run a production deployment with disabled authentication or fake persistence.
+
+Keep server-only environment variables out of Vite client-exposed variables.
+
+# 23. DEPLOYMENT AND OPERATIONS
+
+Prepare a production-oriented deployment configuration consistent with the selected hosting platform.
+
+Include:
+
+- Frontend production build.
+- Backend production startup.
+- SPA route fallback where required.
+- Correct API routing.
+- MongoDB Atlas connection configuration.
+- Secure environment configuration.
+- Health endpoint.
+- Readiness checks.
+- Appropriate CORS and cookie configuration.
+- Production logging.
+- Database backup guidance.
+- Recovery and rollback guidance.
+- Smoke-test instructions.
+
+Verify that refreshing a nested frontend route does not incorrectly return a 404 when the hosting platform supports the required SPA fallback.
+
+Verify that API requests return the intended API responses rather than frontend HTML.
+
+Do not expose environment variables through client bundles or public diagnostic endpoints.
+
+Do not claim deployment is complete if no deployment environment or credentials were available.
+
+# 24. REQUIRED ADDITIONAL PROFESSIONAL FEATURES
+
+Implement additional features when they materially improve the product without compromising the core requirements.
+
+Prioritize:
+
+- Shareable verse links.
+- Copy Arabic text with Unicode preservation.
+- Reader typography controls.
+- Last-read shortcuts.
+- Search result navigation.
+- Audio queue continuity.
+- User preference synchronization.
+- Accessible toast notifications.
+- Confirmation dialogs for destructive administrative actions.
+- Content source attribution.
+- Dataset release history.
+- Admin audit trails.
+- Clear offline and synchronization indicators.
+- A useful privacy policy and content attribution page where appropriate.
+- A concise README with setup, environment, testing, deployment, and recovery instructions.
+
+Do not expand scope with unnecessary social networking, AI-generated religious answers, unverified tafsir, advertising, or complex features unrelated to the client's requirements.
+
+# 25. IMPLEMENTATION PHASES
+
+Follow these phases in sequence while continuing to completion whenever the environment permits.
+
+## Phase 1 — Requirements and environment audit
+
+Inspect the project, determine actual dependencies, identify gaps, evaluate content sources, and record implementation constraints.
+
+## Phase 2 — Verified content foundation
+
+Establish the Quran content schema, source registry, versioning, Arabic text handling, translation mapping, transliteration mapping, and juz boundaries.
+
+Run content integrity checks before building claims around dataset completeness.
+
+## Phase 3 — Backend foundation
+
+Implement Express architecture, configuration validation, API contracts, persistence, centralized error handling, security middleware, and source adapters.
+
+## Phase 4 — Quran reader and navigation
+
+Implement surah explorer, juz explorer, verse navigation, Arabic rendering, Bengali translation, transliteration controls, search, and responsive layouts.
+
+## Phase 5 — Real audio engine
+
+Integrate authorized audio sources and implement genuine playback behavior according to actual asset coverage.
+
+## Phase 6 — Guest experience and accounts
+
+Implement guest progress, bookmarks, optional authentication, account persistence, cross-device synchronization, and ownership protections.
+
+## Phase 7 — Administration
+
+Implement restricted administrative features, source metadata, integrity reports, audio metadata, audit trails, and content release safeguards.
+
+## Phase 8 — Production verification
+
+Run the available tests, content validation, type checks, linting, build, security checks, and end-to-end verification.
+
+Correct discovered failures before declaring completion.
+
+## Phase 9 — Deployment readiness
+
+Verify configuration, startup behavior, routing, API health, database connectivity, logging, and operational documentation to the extent supported by the environment.
+
+Do not stop after creating an implementation plan.
+
+Do not report a phase as complete merely because files have been created.
+
+# 26. DEFINITION OF DONE
+
+The application is complete only to the extent that the following criteria are satisfied.
+
+## Content
+
+- The selected source supports the expected 114-surah structure.
+- The complete expected verse dataset is available and structurally validated.
+- The selected verse-counting convention is documented.
+- Juz mappings resolve to the correct source-defined verse boundaries.
+- Arabic content is preserved and checked against the authorized reference.
+- Bengali translation and transliteration have identifiable sources and appropriate usage rights.
+- Missing content is explicitly reported.
+
+## Audio
+
+- Real qari recordings are integrated.
+- Audio coverage is accurately represented.
+- Playback controls work for the resource types supported.
+- Errors and unavailable assets are handled correctly.
+- Attribution and licensing are documented.
+
+## Application
+
+- Core reading and navigation work.
+- Search returns actual supported content.
+- Bookmarks and progress behave correctly.
+- Guest usage does not require login.
+- Account features persist correctly when configured.
+- The admin dashboard enforces server-side permissions.
+- The UI is responsive and accessible.
+
+## Security
+
+- Authentication and authorization checks are implemented.
+- User data ownership is enforced.
+- Secrets are not exposed.
+- Production configuration is validated.
+- Relevant security and abuse scenarios are tested.
+
+## Verification
+
+- Relevant automated tests have been executed.
+- Critical failures have been addressed or documented.
+- The production build has been attempted and its actual result reported.
+- Deployment verification is reported separately from local build verification.
+- Missing credentials and unavailable external services are explicitly identified.
+
+## Reporting
+
+- No fabricated test results.
+- No fictional content source.
+- No fake audio.
+- No fake authentication.
+- No false claim of scholarly verification.
+- No unsupported production-readiness guarantee.
+
+# 27. FINAL ENGINEERING REPORT
+
+After implementation and verification, produce a concise but technically complete report using these headings.
+
+## 1. Understanding
+
+Summarize the client requirements and implemented scope.
+
+## 2. Findings
+
+Describe the actual initial project state, root causes, architecture decisions, content sources, and constraints.
+
+## 3. Implementation
+
+List the important files and components actually changed or created.
+
+Explain frontend, backend, database, audio, content, authentication, and administration work.
+
+## 4. Verification
+
+Provide the exact commands executed and observed results.
+
+Classify relevant checks as:
+
+- PASSED
+- FAILED
+- BLOCKED
+- NOT RUN
+- NOT APPLICABLE
+
+Distinguish automated mock-based tests from live integration tests.
+
+## 5. Security and Reliability
+
+Explain the implemented safeguards, tested failure scenarios, data-integrity checks, and remaining risks.
+
+## 6. Content Source and Licensing
+
+Identify the actual content providers and dataset versions used.
+
+Document available Bengali translation and transliteration sources, qari identity, audio coverage, attribution, and license constraints.
+
+Do not invent missing details.
+
+## 7. Production Readiness
+
+Report whether the application has been locally built, integration-tested, deployment-tested, and independently verified.
+
+State precisely what remains unverified.
+
+## 8. Required Client Actions
+
+List any real credentials, approvals, content licenses, human reviews, infrastructure, or configuration needed to finish blocked items.
+
+## 9. Final Status
+
+Use an honest status:
+
+- Production-ready within the verified scope.
+- Implemented but not fully production-verified.
+- Partially implemented with explicit blockers.
+- Blocked by identified external dependencies.
+
+Do not use the first status unless sufficient evidence supports it.
+
+# 28. FINAL DIRECTIVE
+
+Build Noor Al-Quran as a genuine full-stack Quran platform, not a static mockup.
+
+Preserve every mandatory client requirement.
+
+Inspect before changing code.
+
+Use verified and properly licensed content.
+
+Never fabricate Quran verses, translations, transliterations, qari audio, provider coverage, or test results.
+
+Separate immutable canonical content from user-specific data.
+
+Enforce security on the server.
+
+Implement actual frontend-to-backend functionality.
+
+Test the critical user journeys.
+
+Fix defects based on evidence.
+
+Report limitations without hiding them.
+
+Begin by inspecting the current Google AI Studio project and its available tools. Then implement the application using the requirements and acceptance criteria above.
+
+Do not stop at planning. Do not declare completion without verification. Do not claim a feature is complete merely because its interface exists.
+
+Your objective is a secure, reliable, accessible, maintainable, and genuinely production-oriented Noor Al-Quran application whose implementation and verification results can be demonstrated with evidence.

@@ -1,0 +1,6 @@
+{
+  "name": "Noor Al-Quran (নূর আল-কুরআন)",
+  "description": "Elite Quran reading, Bengali translation, transliteration, authentic recitation, and personal reading management platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
